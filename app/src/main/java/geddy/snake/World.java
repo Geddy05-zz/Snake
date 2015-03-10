@@ -13,7 +13,7 @@ public class World {
     static final float TICK_DECREMENT = 0.05f;
 
     public Snake snake;
-    public Stain stain;
+    public Mouse mouse;
     public boolean gameOver = false;
     public int score = 0;
     public boolean canMove = true;
@@ -40,21 +40,21 @@ public class World {
             SnakePart part = snake.parts.get(i);
             fields[part.x][part.y] = true;
         }
-        int stainX = random.nextInt(WORLD_WIDTH);
-        int stainY = random.nextInt(WORDL_HEIGHT);
+        int mouseX = random.nextInt(WORLD_WIDTH);
+        int mouseY = random.nextInt(WORDL_HEIGHT);
         while(true){
-            if(fields[stainX][stainY]== false)
+            if(fields[mouseX][mouseY]== false)
                 break;
-            stainX+= 1;
-            if (stainX >= WORLD_WIDTH){
-                stainX =0;
-                stainY+=1;
-                if(stainY >= WORDL_HEIGHT){
-                    stainY =0;
+            mouseX+= 1;
+            if (mouseX >= WORLD_WIDTH){
+                mouseX =0;
+                mouseY+=1;
+                if(mouseY >= WORDL_HEIGHT){
+                    mouseY =0;
                 }
             }
         }
-        stain = new Stain(stainX,stainY,random.nextInt(3));
+        mouse = new Mouse(mouseX,mouseY,random.nextInt(3));
     }
 
     public void update(float deltaTime){
@@ -73,7 +73,7 @@ public class World {
             }
 
             SnakePart head = snake.parts.get(0);
-            if(head.x == stain.x && head.y == stain.y){
+            if(head.x == mouse.x && head.y == mouse.y){
                 score += SCORE_INCREMENT;
                 snake.eat();
                 if(snake.parts.size()==WORLD_WIDTH * WORDL_HEIGHT){
@@ -87,7 +87,7 @@ public class World {
                     tick -= TICK_DECREMENT;
                 }
             }else if(canMove){
-                stain.advance();
+                mouse.advance();
                 canMove = false;
             }
             else

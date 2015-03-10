@@ -148,7 +148,7 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         Snake snake = world.snake;
         SnakePart head = snake.parts.get(0);
-        Stain stain = world.stain;
+        Mouse mouse = world.mouse;
 
         int x,y;
 
@@ -162,15 +162,15 @@ public class GameScreen extends Screen {
         }
 
         Pixmap stainPixmap = null;
-        if(stain.type == Stain.TYPE_1)
-            stainPixmap = Assets.stain1;
-        if(stain.type == Stain.TYPE_2)
-            stainPixmap = Assets.stain2;
-        if(stain.type == Stain.Type_3)
-            stainPixmap = Assets.stain3;
+        if(mouse.type == Mouse.TYPE_1)
+            stainPixmap = Assets.mouse1;
+        if(mouse.type == Mouse.TYPE_2)
+            stainPixmap = Assets.mouse2;
+        if(mouse.type == Mouse.Type_3)
+            stainPixmap = Assets.mouse3;
 
-        x = stain.x*32;
-        y = stain.y*32;
+        x = mouse.x*32;
+        y = mouse.y*32;
         g.drawPixmap(stainPixmap,x,y);
 
         Pixmap headPixmap = null;

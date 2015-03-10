@@ -25,7 +25,7 @@ public class HelpScreen2 extends Screen {
             Input.TouchEvent event = touchEvents.get(i);
             if(event.type == Input.TouchEvent.TOUCH_UP){
                 if(event.x > 256 && event.y > 416){
-                    game.setScreen(new HelpScreen3(game));
+                    game.setScreen(new MainMenuScreen(game));
                     if(Settings.soundEnabled)
                         Assets.click.play(1);
                     return;
